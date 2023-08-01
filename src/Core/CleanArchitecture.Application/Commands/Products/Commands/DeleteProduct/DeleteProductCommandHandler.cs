@@ -17,7 +17,7 @@ public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand,
     {
         var product = await _repository.FindAsync(command.Id);
         
-        ThrowHelper.ThrowUserFriendlyExceptionIfNull(product,
+        Throw.UserFriendlyExceptionIfNull(product,
             404, "Product with given id not found");
 
         _repository.Remove(product!);

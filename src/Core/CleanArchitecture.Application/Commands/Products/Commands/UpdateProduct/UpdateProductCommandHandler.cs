@@ -23,13 +23,13 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand>
         
         var product = await _repository.FindAsync(command.Id);
         
-        ThrowHelper.ThrowUserFriendlyExceptionIfNull(product,
+        Throw.UserFriendlyExceptionIfNull(product,
             404, "Product with given id not found");
 
-        ThrowHelper.ThrowUserFriendlyExceptionIf(
+        Throw.UserFriendlyExceptionIf(
             await _repository.AnyAsync(p => p.Id != command.Id && p.Name == command.Name),
             403, "Product already exist");
-
+        
         _mapper.Map(command, product);
         _repository.Update(product!);
         await _repository.SaveChangesAsync();

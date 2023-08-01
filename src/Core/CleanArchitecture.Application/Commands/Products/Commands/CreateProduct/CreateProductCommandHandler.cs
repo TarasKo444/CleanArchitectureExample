@@ -24,7 +24,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
         
         var product = _mapper.Map<Product>(command);
 
-        ThrowHelper.ThrowUserFriendlyExceptionIf(
+        Throw.UserFriendlyExceptionIf(
             await _repository.AnyAsync(p => p.Name == product.Name),
             403, "Product already exist");
         
