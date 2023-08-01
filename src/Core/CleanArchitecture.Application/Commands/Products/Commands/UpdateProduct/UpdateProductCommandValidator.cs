@@ -10,8 +10,9 @@ public class UpdateProductCommandValidator : AbstractValidator<UpdateProductComm
             .NotEqual(Guid.Empty);
 
         RuleFor(x => x.Name)
-            .NotNull().WithMessage("Product name cannot be null");
-        
+            .NotNull().WithMessage("Product name cannot be null")
+            .NotEmpty().WithMessage("Product name cannot be empty");
+
         RuleFor(x => x.Description)
             .NotNull().WithMessage("Product description cannot be null")
             .NotEmpty().WithMessage("Product description cannot be empty")
