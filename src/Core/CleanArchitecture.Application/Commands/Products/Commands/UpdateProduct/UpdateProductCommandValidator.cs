@@ -6,11 +6,15 @@ public class UpdateProductCommandValidator : AbstractValidator<UpdateProductComm
 {
     public UpdateProductCommandValidator()
     {
-        RuleFor(p => p.Id)
+        RuleFor(x => x.Id)
             .NotEqual(Guid.Empty);
+
+        RuleFor(x => x.Name)
+            .NotNull().WithMessage("Product name cannot be null");
         
         RuleFor(x => x.Description)
-            .NotEmpty().WithMessage("Product description cannot be empty.")
+            .NotNull().WithMessage("Product description cannot be null")
+            .NotEmpty().WithMessage("Product description cannot be empty")
             .MaximumLength(250).WithMessage("Product description length should be 250 or less");
 
         RuleFor(x => x.Price)

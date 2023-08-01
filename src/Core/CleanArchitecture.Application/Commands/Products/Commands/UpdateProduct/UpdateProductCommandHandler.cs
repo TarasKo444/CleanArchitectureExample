@@ -18,6 +18,9 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand>
 
     public async Task Handle(UpdateProductCommand command, CancellationToken cancellationToken)
     {
+        command.Name = command.Name!.Trim();
+        command.Description = command.Description!.Trim();
+        
         var product = await _repository.FindAsync(command.Id);
         
         if (product is null)

@@ -19,6 +19,9 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
 
     public async Task<Guid> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
+        command.Name = command.Name!.Trim();
+        command.Description = command.Description!.Trim();
+        
         var product = _mapper.Map<Product>(command);
 
         if (await _repository.AnyAsync(p => p.Name == product.Name))
@@ -26,6 +29,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
         
         await _repository.AddAsync(product);
         await _repository.SaveChangesAsync();
+        
         return product.Id;
     }
 }
