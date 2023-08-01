@@ -477,4 +477,4 @@ $RECYCLE.BIN/
 *.lnk
 
 dir_to_ignore/.idea
-.idea/.idea.CleanArchitecture/.idea/.name
+.idea
