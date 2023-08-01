@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Persistence", "src\Infrastructure\CleanArchitecture.Persistence\CleanArchitecture.Persistence.csproj", "{4A2EA0BF-28D3-4441-BE60-86611868EF6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.EFCoreTests", "tests\CleanArchitecture.EFCoreTests\CleanArchitecture.EFCoreTests.csproj", "{68522E17-EFB4-43D8-9A22-79D901362A6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.UnitTests", "tests\CleanArchitecture.UnitTests\CleanArchitecture.UnitTests.csproj", "{68522E17-EFB4-43D8-9A22-79D901362A6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Common", "src\Common\CleanArchitecture.Common\CleanArchitecture.Common.csproj", "{F0C8328B-A310-4361-A93D-95A16AF0CFD9}"
 EndProject
