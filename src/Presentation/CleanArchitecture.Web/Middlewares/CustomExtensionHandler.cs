@@ -1,5 +1,4 @@
-﻿using CleanArchitecture.Common;
-using CleanArchitecture.Common.Exceptions;
+﻿using CleanArchitecture.Common.Exceptions;
 using FluentValidation;
 
 namespace CleanArchitecture.Web.Middlewares;
@@ -29,7 +28,7 @@ public class CustomExtensionHandler
         }
     }
 
-    private async Task HandleExceptionAsync(HttpContext context, Exception exception)
+    private static async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         int code = 500;
         string message = string.Empty;
@@ -45,7 +44,7 @@ public class CustomExtensionHandler
         context.Response.StatusCode = code;
         await context.Response.WriteAsJsonAsync(new { Status = code, Message = message });
     }
-    private async Task HandleValidationExceptionAsync(HttpContext context, ValidationException exception)
+    private static async Task HandleValidationExceptionAsync(HttpContext context, ValidationException exception)
     {
         const int code = 400;
         context.Response.StatusCode = code;

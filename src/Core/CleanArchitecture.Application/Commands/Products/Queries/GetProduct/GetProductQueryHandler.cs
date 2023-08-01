@@ -1,5 +1,4 @@
 ﻿using CleanArchitecture.Application.Models;
-using CleanArchitecture.Common;
 using CleanArchitecture.Common.Exceptions;
 using CleanArchitecture.Domain.Abstractions;
 using MapsterMapper;

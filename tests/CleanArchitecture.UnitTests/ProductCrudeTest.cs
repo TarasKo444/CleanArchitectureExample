@@ -4,7 +4,6 @@ using CleanArchitecture.Application.Commands.Products.Commands.DeleteProduct;
 using CleanArchitecture.Application.Commands.Products.Commands.UpdateProduct;
 using CleanArchitecture.Application.Commands.Products.Queries.GetProduct;
 using CleanArchitecture.Application.Commands.Products.Queries.GetProducts;
-using CleanArchitecture.Common;
 using CleanArchitecture.Common.Exceptions;
 using CleanArchitecture.Domain.Abstractions;
 using CleanArchitecture.Persistence;

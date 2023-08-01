@@ -1,5 +1,4 @@
-﻿using CleanArchitecture.Common;
-using CleanArchitecture.Common.Exceptions;
+﻿using CleanArchitecture.Common.Exceptions;
 using CleanArchitecture.Domain.Abstractions;
 using MapsterMapper;
 using MediatR;
@@ -26,7 +25,6 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand>
 
         if (await _repository.AnyAsync(p => p.Id != command.Id && p.Name == command.Name))
             throw new UserFriendlyException(403, "Product already exist");
-
         
         _mapper.Map(command, product);
         _repository.Update(product);
