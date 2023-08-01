@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Common.Exceptions;
+﻿using CleanArchitecture.Common;
 using CleanArchitecture.Domain.Abstractions;
 using CleanArchitecture.Domain.Entities;
 using MapsterMapper;
@@ -24,8 +24,9 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
         
         var product = _mapper.Map<Product>(command);
 
-        if (await _repository.AnyAsync(p => p.Name == product.Name))
-            throw new UserFriendlyException(403, "Product already exist");
+        ThrowHelper.ThrowUserFriendlyExceptionIf(
+            await _repository.AnyAsync(p => p.Name == product.Name),
+            403, "Product already exist");
         
         await _repository.AddAsync(product);
         await _repository.SaveChangesAsync();

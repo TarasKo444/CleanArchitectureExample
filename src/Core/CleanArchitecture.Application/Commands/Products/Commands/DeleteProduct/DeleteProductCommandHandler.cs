@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Common.Exceptions;
+﻿using CleanArchitecture.Common;
 using CleanArchitecture.Domain.Abstractions;
 using MediatR;
 
@@ -17,10 +17,10 @@ public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand,
     {
         var product = await _repository.FindAsync(command.Id);
         
-        if (product is null)
-            throw new UserFriendlyException(404, "Product with given id not found");
+        ThrowHelper.ThrowUserFriendlyExceptionIfNull(product,
+            404, "Product with given id not found");
 
-        _repository.Remove(product);
+        _repository.Remove(product!);
         await _repository.SaveChangesAsync();
         return Unit.Value;
     }
