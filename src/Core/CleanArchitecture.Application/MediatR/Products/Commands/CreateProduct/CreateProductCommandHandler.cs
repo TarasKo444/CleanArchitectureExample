@@ -13,8 +13,8 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
 
     public CreateProductCommandHandler(IMapper mapper, IProductRepository repository)
     {
-        _mapper = mapper;
         _repository = repository;
+        _mapper = mapper;
     }
 
     public async Task<Guid> Handle(CreateProductCommand command, CancellationToken cancellationToken)
