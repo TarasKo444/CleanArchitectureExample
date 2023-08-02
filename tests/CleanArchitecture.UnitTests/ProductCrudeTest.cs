@@ -126,7 +126,7 @@ public class ProductCrudeTest
         await handler.Handle(command, new());
 
         (await _repository.ToListAsync()).Should().HaveCount(1);
-        (await _repository.FirstOrDefaultAsync())!.Id.Should().Be(command.Id);
+        (await _repository.FirstOrDefaultAsync())!.Id.Should().Be(command.Id!.Value);
         (await _repository.FirstOrDefaultAsync())!.Name.Should().Be(command.Name);
     }
 
