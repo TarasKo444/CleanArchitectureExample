@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace CleanArchitecture.Application.Commands.Products.Queries.GetProduct;
+namespace CleanArchitecture.Application.MediatR.Products.Queries.GetProduct;
 
 public class GetProductQueryValidator : AbstractValidator<GetProductQuery>
 {

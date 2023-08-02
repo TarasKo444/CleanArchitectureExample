@@ -1,6 +1,6 @@
 ﻿using AutoFixture;
-using CleanArchitecture.Application.Commands.Products.Commands.CreateProduct;
-using CleanArchitecture.Application.Commands.Products.Commands.DeleteProduct;
+using CleanArchitecture.Application.MediatR.Products.Commands.CreateProduct;
+using CleanArchitecture.Application.MediatR.Products.Commands.DeleteProduct;
 using CleanArchitecture.Domain.Abstractions;
 using CleanArchitecture.Persistence;
 using CleanArchitecture.Persistence.Repositories;
@@ -80,7 +80,7 @@ public class ValidationErrorsTest
             new DeleteProductCommandValidator()
         });
 
-        var command = new DeleteProductCommand()
+        var command = new DeleteProductCommand
         {
             Id = Guid.Empty
         };

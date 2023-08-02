@@ -4,7 +4,7 @@ using CleanArchitecture.Domain.Abstractions;
 using MapsterMapper;
 using MediatR;
 
-namespace CleanArchitecture.Application.Commands.Products.Queries.GetProduct;
+namespace CleanArchitecture.Application.MediatR.Products.Queries.GetProduct;
 
 public class GetProductQueryHandler : IRequestHandler<GetProductQuery, ProductVm>
 {

@@ -4,7 +4,7 @@ using CleanArchitecture.Domain.Entities;
 using MapsterMapper;
 using MediatR;
 
-namespace CleanArchitecture.Application.Commands.Products.Commands.CreateProduct;
+namespace CleanArchitecture.Application.MediatR.Products.Commands.CreateProduct;
 
 public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Guid>
 {

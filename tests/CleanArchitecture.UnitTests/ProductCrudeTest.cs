@@ -1,9 +1,9 @@
 using AutoFixture;
-using CleanArchitecture.Application.Commands.Products.Commands.CreateProduct;
-using CleanArchitecture.Application.Commands.Products.Commands.DeleteProduct;
-using CleanArchitecture.Application.Commands.Products.Commands.UpdateProduct;
-using CleanArchitecture.Application.Commands.Products.Queries.GetProduct;
-using CleanArchitecture.Application.Commands.Products.Queries.GetProducts;
+using CleanArchitecture.Application.MediatR.Products.Commands.CreateProduct;
+using CleanArchitecture.Application.MediatR.Products.Commands.DeleteProduct;
+using CleanArchitecture.Application.MediatR.Products.Commands.UpdateProduct;
+using CleanArchitecture.Application.MediatR.Products.Queries.GetProduct;
+using CleanArchitecture.Application.MediatR.Products.Queries.GetProducts;
 using CleanArchitecture.Common.Exceptions;
 using CleanArchitecture.Domain.Abstractions;
 using CleanArchitecture.Persistence;
@@ -55,7 +55,7 @@ public class ProductCrudeTest
 
         var product = (await _repository.FirstOrDefaultAsync())!;
 
-        var command = new CreateProductCommand()
+        var command = new CreateProductCommand
         {
             Name = product.Name,
             Description = product.Description,
@@ -80,7 +80,7 @@ public class ProductCrudeTest
         await AddProductTest();
         var product = (await _repository.FirstOrDefaultAsync())!;
 
-        var command = new DeleteProductCommand()
+        var command = new DeleteProductCommand
         {
             Id = product.Id
         };
@@ -95,7 +95,7 @@ public class ProductCrudeTest
     [Fact]
     public async Task UnSuccessDeleteProductTest()
     {
-        var command = new DeleteProductCommand()
+        var command = new DeleteProductCommand
         {
             Id = Guid.NewGuid()
         };
@@ -141,7 +141,7 @@ public class ProductCrudeTest
         var id = await commandHandler.Handle(addCommand, new());
         var productWithNameToCheck = (await _repository.FindAsync(id))!;
 
-        var command = new UpdateProductCommand()
+        var command = new UpdateProductCommand
         {
             Id = product.Id,
             Name = productWithNameToCheck.Name,
@@ -164,7 +164,7 @@ public class ProductCrudeTest
         await AddProductTest();
         var product = (await _repository.FirstOrDefaultAsync())!;
 
-        var command = new UpdateProductCommand()
+        var command = new UpdateProductCommand
         {
             Id = product.Id,
             Name = product.Name,
@@ -217,7 +217,7 @@ public class ProductCrudeTest
     [Fact]
     public async Task GetEmptyProductsTest()
     {
-        var command = new DeleteProductCommand()
+        var command = new DeleteProductCommand
         {
             Id = await AddProductTest()
         };
@@ -238,7 +238,7 @@ public class ProductCrudeTest
         var createCommandHandler = new CreateProductCommandHandler(_mapper, _repository);
         var id = await createCommandHandler.Handle(createCommand, new());
 
-        var query = new GetProductQuery() { Id = id };
+        var query = new GetProductQuery { Id = id };
         var handler = new GetProductQueryHandler(_mapper, _repository);
 
         (await handler.Handle(query, new())).Id.Should().Be(id);

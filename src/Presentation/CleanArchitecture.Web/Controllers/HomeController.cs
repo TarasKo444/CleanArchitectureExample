@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Application.Commands.Products.Commands.CreateProduct;
-using CleanArchitecture.Application.Commands.Products.Commands.DeleteProduct;
-using CleanArchitecture.Application.Commands.Products.Commands.UpdateProduct;
-using CleanArchitecture.Application.Commands.Products.Queries.GetProduct;
-using CleanArchitecture.Application.Commands.Products.Queries.GetProducts;
+﻿using CleanArchitecture.Application.MediatR.Products.Commands.CreateProduct;
+using CleanArchitecture.Application.MediatR.Products.Commands.DeleteProduct;
+using CleanArchitecture.Application.MediatR.Products.Commands.UpdateProduct;
+using CleanArchitecture.Application.MediatR.Products.Queries.GetProduct;
+using CleanArchitecture.Application.MediatR.Products.Queries.GetProducts;
 using CleanArchitecture.Application.Models;
 using CleanArchitecture.Web.Models;
 using MapsterMapper;
@@ -34,7 +34,7 @@ public class HomeController : ControllerBase
     [HttpGet("{guid:guid}")]
     public async Task<ProductVm> Get(Guid guid)
     {
-        var query = new GetProductQuery() { Id = guid };
+        var query = new GetProductQuery { Id = guid };
         return await _mediator.Send(query);
     }
 
@@ -48,7 +48,7 @@ public class HomeController : ControllerBase
     [HttpDelete("{guid:guid}")]
     public async Task Delete(Guid guid)
     {
-        var command = new DeleteProductCommand() { Id = guid };
+        var command = new DeleteProductCommand { Id = guid };
         await _mediator.Send(command);
     }
 

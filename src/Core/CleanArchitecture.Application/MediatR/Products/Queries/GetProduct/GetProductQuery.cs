@@ -1,7 +1,7 @@
 ﻿using CleanArchitecture.Application.Models;
 using MediatR;
 
-namespace CleanArchitecture.Application.Commands.Products.Queries.GetProduct;
+namespace CleanArchitecture.Application.MediatR.Products.Queries.GetProduct;
 
 public class GetProductQuery : IRequest<ProductVm>
 {
