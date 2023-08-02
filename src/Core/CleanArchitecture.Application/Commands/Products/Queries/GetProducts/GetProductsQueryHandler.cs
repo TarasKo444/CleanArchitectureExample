@@ -7,10 +7,10 @@ namespace CleanArchitecture.Application.Commands.Products.Queries.GetProducts;
 
 public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, List<ProductVm>>
 {
-    private readonly IProductRepository _repository;
     private readonly IMapper _mapper;
+    private readonly IProductRepository _repository;
 
-    public GetProductsQueryHandler(IProductRepository repository, IMapper mapper)
+    public GetProductsQueryHandler(IMapper mapper, IProductRepository repository)
     {
         _repository = repository;
         _mapper = mapper;
@@ -18,8 +18,7 @@ public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, List<Pr
 
     public async Task<List<ProductVm>> Handle(GetProductsQuery query, CancellationToken cancellationToken)
     {
-        return (await _repository
-            .ToListAsync())
+        return (await _repository.ToListAsync())
             .Select(t => _mapper.Map<ProductVm>(t))
             .ToList();
     }

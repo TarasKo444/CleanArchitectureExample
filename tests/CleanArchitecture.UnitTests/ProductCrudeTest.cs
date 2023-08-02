@@ -121,7 +121,7 @@ public class ProductCrudeTest
             .With(c => c.Id, await AddProductTest())
             .Create();
 
-        var handler = new UpdateProductCommandHandler(_repository, _mapper);
+        var handler = new UpdateProductCommandHandler(_mapper, _repository);
 
         await handler.Handle(command, new());
 
@@ -149,7 +149,7 @@ public class ProductCrudeTest
             Price = productWithNameToCheck.Price
         };
 
-        var handler = new UpdateProductCommandHandler(_repository, _mapper);
+        var handler = new UpdateProductCommandHandler(_mapper, _repository);
 
         await handler
             .Invoking(h => h.Handle(command, new()))
@@ -172,7 +172,7 @@ public class ProductCrudeTest
             Price = product.Price
         };
 
-        var handler = new UpdateProductCommandHandler(_repository, _mapper);
+        var handler = new UpdateProductCommandHandler(_mapper, _repository);
 
         await handler
             .Invoking(h => h.Handle(command, new()))
@@ -185,7 +185,7 @@ public class ProductCrudeTest
     {
         var command = _fixture.Create<UpdateProductCommand>();
 
-        var handler = new UpdateProductCommandHandler(_repository, _mapper);
+        var handler = new UpdateProductCommandHandler(_mapper, _repository);
 
         await handler
             .Invoking(h => h.Handle(command, new()))
@@ -209,7 +209,7 @@ public class ProductCrudeTest
         }
 
         var query = new GetProductsQuery();
-        var handler = new GetProductsQueryHandler(_repository, _mapper);
+        var handler = new GetProductsQueryHandler(_mapper, _repository);
 
         (await handler.Handle(query, new())).Should().HaveCount(3);
     }
@@ -226,7 +226,7 @@ public class ProductCrudeTest
         await commandHandler.Handle(command, new());
 
         var query = new GetProductsQuery();
-        var handler = new GetProductsQueryHandler(_repository, _mapper);
+        var handler = new GetProductsQueryHandler(_mapper, _repository);
 
         (await handler.Handle(query, new())).Should().BeEmpty();
     }
@@ -239,7 +239,7 @@ public class ProductCrudeTest
         var id = await createCommandHandler.Handle(createCommand, new());
 
         var query = new GetProductQuery() { Id = id };
-        var handler = new GetProductQueryHandler(_repository, _mapper);
+        var handler = new GetProductQueryHandler(_mapper, _repository);
 
         (await handler.Handle(query, new())).Id.Should().Be(id);
         (await _repository.ToListAsync()).Should().HaveCount(1);

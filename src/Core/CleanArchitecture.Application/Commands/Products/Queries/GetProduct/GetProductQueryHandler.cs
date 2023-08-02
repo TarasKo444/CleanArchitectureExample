@@ -8,10 +8,10 @@ namespace CleanArchitecture.Application.Commands.Products.Queries.GetProduct;
 
 public class GetProductQueryHandler : IRequestHandler<GetProductQuery, ProductVm>
 {
-    private readonly IProductRepository _repository;
     private readonly IMapper _mapper;
+    private readonly IProductRepository _repository;
 
-    public GetProductQueryHandler(IProductRepository repository, IMapper mapper)
+    public GetProductQueryHandler(IMapper mapper, IProductRepository repository)
     {
         _repository = repository;
         _mapper = mapper;

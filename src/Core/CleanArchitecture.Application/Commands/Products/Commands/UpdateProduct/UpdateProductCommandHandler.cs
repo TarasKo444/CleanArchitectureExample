@@ -7,10 +7,10 @@ namespace CleanArchitecture.Application.Commands.Products.Commands.UpdateProduct
 
 public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, Unit>
 {
-    private readonly IProductRepository _repository;
     private readonly IMapper _mapper;
+    private readonly IProductRepository _repository;
 
-    public UpdateProductCommandHandler(IProductRepository repository, IMapper mapper)
+    public UpdateProductCommandHandler(IMapper mapper, IProductRepository repository)
     {
         _repository = repository;
         _mapper = mapper;
