@@ -19,7 +19,7 @@ public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand,
         
         Throw.UserFriendlyExceptionIfNull(product,
             404, "Product with given id not found");
-
+        
         _repository.Remove(product!);
         await _repository.SaveChangesAsync();
         return Unit.Value;

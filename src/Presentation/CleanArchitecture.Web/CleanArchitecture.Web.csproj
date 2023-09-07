@@ -14,12 +14,17 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Serilog" Version="3.0.2-dev-02044" />
+      <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+      <PackageReference Include="Serilog.Sinks.Console" Version="4.2.0-dev-00918" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Common\CleanArchitecture.Common\CleanArchitecture.Common.csproj" />
       <ProjectReference Include="..\..\Core\CleanArchitecture.Application\CleanArchitecture.Application.csproj" />
       <ProjectReference Include="..\..\Infrastructure\CleanArchitecture.Persistence\CleanArchitecture.Persistence.csproj" />
+
+
     </ItemGroup>
 
 
