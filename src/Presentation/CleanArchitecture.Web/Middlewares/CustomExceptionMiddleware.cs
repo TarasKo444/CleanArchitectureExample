@@ -3,11 +3,11 @@ using FluentValidation;
 
 namespace CleanArchitecture.Web.Middlewares;
 
-public class CustomExtensionHandler
+public class CustomExceptionMiddleware
 {
     private readonly RequestDelegate _next;
 
-    public CustomExtensionHandler(RequestDelegate next)
+    public CustomExceptionMiddleware(RequestDelegate next)
     {
         _next = next;
     }
@@ -54,8 +54,8 @@ public class CustomExtensionHandler
 
 public static class CustomExtensionHandlerExtension
 {
-    public static IApplicationBuilder UseCustomExtensionHandler(this IApplicationBuilder app)
+    public static IApplicationBuilder UseCustomExceptionMiddleware(this IApplicationBuilder app)
     {
-        return app.UseMiddleware<CustomExtensionHandler>();
+        return app.UseMiddleware<CustomExceptionMiddleware>();
     }
 }

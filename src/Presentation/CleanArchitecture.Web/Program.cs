@@ -11,7 +11,7 @@ builder.Services.AddEfCore(builder.Configuration);
 
 var app = builder.Build();
 
-app.UseCustomExtensionHandler();
+app.UseCustomExceptionMiddleware();
 app.MapControllers();
 
 app.Run();
